@@ -5,41 +5,53 @@
 import random
 
 # List of different words for the word game
-guesing_words = ["pickle", "rock", "dog", "tractor", "bark", "lamp" ]
+guesing_words = ["pickle", "rock", "dog", "tractor", "bark"]
 
 def get_word():
     return random.choice(guesing_words)
 
-#
-def game(word, guessed_letter)
-    display = "_"
+def game(word, guess_letter):
+    display = ""
     for letter in word:
-        if letter in guessed_letter:
-            display = letter
+        if letter in guess_letter:
+            display += letter + " "
+        else:
+            display += "_"
+    return display.strip()
 
-    return display
-def check_guess(word, guess)
+def check_guess(word, guess):
     return guess in word
 
 def play_game():
     word = get_word()
     guessed_letter = []
+    turns = 8
 
     print("It's game time!")
 
     while turns > 0:
         print("This is how you play. You are going to guess letters to figure out what the word is.")
-        guess = input("Guess a letter:")
+        print("word:", game(word, guessed_letter))
+        print("You have this many trys: ", turns)
+
+        guess = input("Guess a letter:").lower()
+        
+        if guess in guessed_letter:
+            print("You already guessed that letter, try again.")
+            continue
+
         guessed_letter.append(guess)
+
         if check_guess(word, guess):
             print("correct")
         else:
             print("wrong")
-            attempts -= 1
+            turns -= 1
 
-        if game(word, guessed_letter) == word:
+        if "_" not in game(word, guessed_letter):
             print("Good job, you guessed the word!")
+            return
 
-    print("Sorry you didn't get it. The word was: ", word  "Play again to guess another word")
+    print("Sorry you didn't get it. The word was: ", word,  "Play again to guess another word")
 
 play_game()
