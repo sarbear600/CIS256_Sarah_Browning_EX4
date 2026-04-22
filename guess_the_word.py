@@ -54,13 +54,14 @@ def play_game():
 
     print("Sorry you didn't get it. The word was: ", word,  "Play again to guess another word")
 
-while True:
-    play_game()
+if __name__ == "__main__":  
+    while True:
+        play_game()
 
-    repeat_game = input("Do you want to play again yes(Y) or no(N): ").lower()
-    if repeat_game == "y":
-        print("Lets play again")
-        continue
-    else: 
-        print("Thanks for playing")
-        break
+        repeat_game = input("Do you want to play again yes(Y) or no(N): ").lower()
+        if repeat_game == "y":
+            print("Lets play again")
+            continue
+        else: 
+            print("Thanks for playing")
+            break
