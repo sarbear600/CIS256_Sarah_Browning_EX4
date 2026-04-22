@@ -28,9 +28,9 @@ def play_game():
     turns = 8
 
     print("It's game time!")
+    print("This is how you play. You are going to guess letters to figure out what the word is.")
 
     while turns > 0:
-        print("This is how you play. You are going to guess letters to figure out what the word is.")
         print("word:", game(word, guessed_letter))
         print("You have this many trys: ", turns)
 
@@ -54,4 +54,13 @@ def play_game():
 
     print("Sorry you didn't get it. The word was: ", word,  "Play again to guess another word")
 
-play_game()
+while True:
+    play_game()
+
+    repeat_game = input("Do you want to play again yes(Y) or no(N): ").lower()
+    if repeat_game == "y":
+        print("Lets play again")
+        continue
+    else: 
+        print("Thanks for playing")
+        break
